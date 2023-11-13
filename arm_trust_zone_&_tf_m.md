@@ -13,3 +13,9 @@ TF-M consists of:
 -Crypto, Internal Trusted Storage (ITS), Protected Storage (PS), Firmware Update and Attestation secure services
 
 ![tf-m armv8](/pictures/readme_tfm_v8.png)
+
+Applications and Libraries in the Non-secure Processing Environment can utilize these secure services with a standardized set of PSA Functional APIs. 
+Applications running on Cortex-M devices can leverage TF-M services to ensure secure connection with edge gateways and IoT cloud services. 
+It also protects the critical security assets such as sensitive data, keys and certificates on the platform.
+TF-M is supported on several Cortex-M based Microcontrollers and Real Time Operating Systems (RTOS).
+[source](https://ci-builds.trustedfirmware.org/static-files/31168MMjuHf7gsU-9MGWjKtZQh70dGofYDViYgHrvqoxNjk5ODYxNTc2MjQ3Ojk6YW5vbnltb3VzOmpvYi90Zi1tLWJ1aWxkLWRvY3MtbmlnaHRseS9sYXN0U3RhYmxlQnVpbGQvYXJ0aWZhY3Q=/trusted-firmware-m/build/docs/user_guide/html/introduction/readme.html)
