@@ -1,4 +1,32 @@
 # ARM Trust Zone
+Execution modes and privilege levels:\
+![trust zone execution modes and privilege levels](/pictures/tz-exec-mode-s-ns.svg)
+
+Trustzone-A also has a so-called Security Monitor, which is the **sole entry point** into secure world.\
+Trustzone-M processors can have **many entry points**, which are placed in a dedicated region, called non-secure callable region.
+
+There are three security attributes a memory region can have. One for each security level (secure and non-secure) and an additional (non-secure callable), which we are going to discuss soon:
+- non-secure (**NS**)
+- non-secure callable (**NSC**)
+- secure (**S**)
+
+## Banked Registers
+Between security states the following registers are banked. 
+Banking a register means that there are distinct instances of these registers available. 
+These instances are switched automatically by the core during transitioning from NS to S and back. 
+The following registers are banked in Armv8-M:
+
+Banked general-purpose registers:
+- `R13`: `SP` (Stack Pointer)
+Banked special-purpose registers:
+- `PRIMASK`, `FAULTMASK`, `BASEPRI`
+- Some bits in `CONTROL`
+The System Control Space `SCS` is also banked.
+
+## SAU & IDAU: Security Attribution
+Security attribution of memory addresses is done in so-called Attribution Units:
+- Security Attribution Unit (SAU), which is always available in Armv8-M cores. On reset SAU is disabled.
+- Implementation Defined Attribution Unit (IDAU), which is external to the core and the presence depends on the vendors implementation.
 
 # TF-M
 Trusted Firmware-M (TF-M) implements the Secure Processing Environment (SPE) for Armv8-M, Armv8.1-M architectures (e.g. the Cortex-M33, Cortex-M23, Cortex-M55, Cortex-M85 processors) and dual-core platforms.
@@ -19,3 +47,5 @@ Applications running on Cortex-M devices can leverage TF-M services to ensure se
 It also protects the critical security assets such as sensitive data, keys and certificates on the platform.
 TF-M is supported on several Cortex-M based Microcontrollers and Real Time Operating Systems (RTOS).
 [source](https://ci-builds.trustedfirmware.org/static-files/31168MMjuHf7gsU-9MGWjKtZQh70dGofYDViYgHrvqoxNjk5ODYxNTc2MjQ3Ojk6YW5vbnltb3VzOmpvYi90Zi1tLWJ1aWxkLWRvY3MtbmlnaHRseS9sYXN0U3RhYmxlQnVpbGQvYXJ0aWZhY3Q=/trusted-firmware-m/build/docs/user_guide/html/introduction/readme.html)
+
+# Platform Security Architecture (PSA)
