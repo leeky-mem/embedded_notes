@@ -42,7 +42,7 @@ TF-M consists of:
 
 ![tf-m armv8](/pictures/readme_tfm_v8.png)
 
-TBSA-M eans Trusted Base Architecture M 
+TBSA-M means Trusted Base Architecture M 
 
 Applications and Libraries in the Non-secure Processing Environment can utilize these secure services with a standardized set of PSA Functional APIs. 
 Applications running on Cortex-M devices can leverage TF-M services to ensure secure connection with edge gateways and IoT cloud services. 
